@@ -1,5 +1,20 @@
-import pyttsx3
+#PDF reader
 
+import pyttsx3
+import PyPDF2
+
+book = open('/Users/thomascordeiro/Documents/codeProjects/pythonReader/pythonReader/book.pdf', 'rb')
+pdfReader = PyPDF2.PdfFileReader(book)
+pages = pdfReader.numPages
+print(pages)
 speaker = pyttsx3.init()
-speaker.say('Sarah, please go and take care of your room when you are finished')
-speaker.runAndWait()
+page = pdfReader.getPage(7)
+text = page.extractText()
+speaker.say(text)
+speaker.runAndWait() 
+
+
+
+
+
+
